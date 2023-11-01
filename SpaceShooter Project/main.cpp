@@ -3,7 +3,7 @@
 #include "SDL_image.h"
 #include "SDL_mixer.h"
 #include "SDL_ttf.h"
-#include "GameObject.h"
+#include "Ship.h"
 
 SDL_Renderer* g_sdlRenderer;
 SDL_Window* g_sdlWindow;
@@ -120,14 +120,14 @@ int main(int argc, char* argv[])
 	}
 
 	//Load textures
-	SDL_Texture* Texture = LoadTexture("Assets/door.png");
-	GameObject player{ Texture };
-	//SDL_Texture* TextureC = LoadTexture("PlayerShip.bmp");
+	SDL_Texture* P_Ship = LoadTexture("Assets/PlayerShip.png");
+	Ship PlayerShip{ P_Ship };
+	SDL_Texture* Background = LoadTexture("Assets/background.png");
 
 	//Load Sound Effects
-	Mix_Chunk* coinsSFX = Mix_LoadWAV("Assets/Coin01.wav");
+	Mix_Chunk* LaserSFX = Mix_LoadWAV("Assets/laser6.mp3");
 	//Load Music File
-	Mix_Music* Music = Mix_LoadMUS("Assets/rng_lo-fi_loop.mp3");
+	Mix_Music* Music = Mix_LoadMUS("Music/Music1.mp3");
 	//Play Music with inifinte looping
 	Mix_PlayMusic(Music, -1);
 
@@ -136,19 +136,16 @@ int main(int argc, char* argv[])
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, textSurface);
 	SDL_FreeSurface(textSurface);*/
 	
-	int ShipX = 300;
-	int ShipY = 800;
+	
 
 	Uint32 previousFrameTicks = SDL_GetTicks();
-
 
 	bool keepRunning = true;
 	while (keepRunning)
 	{
 		float deltaTime = (SDL_GetTicks() - (float)(previousFrameTicks)) / 1000;
 		previousFrameTicks = SDL_GetTicks();
-
-		
+				
 		SDL_Event sdlEvent;
 		while (SDL_PollEvent(&sdlEvent))
 		{
@@ -157,9 +154,7 @@ int main(int argc, char* argv[])
 			case SDL_QUIT:
 				keepRunning = false;
 				break;
-
-
-			
+							
 			case SDL_KEYDOWN:
 				if (sdlEvent.key.keysym.sym == SDLK_ESCAPE)
 				{
@@ -168,46 +163,34 @@ int main(int argc, char* argv[])
 				
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
 				{
-					player.m_y-= 200 * deltaTime;
+					PlayerShip.KeyMoveUp() * deltaTime;	
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_a || sdlEvent.key.keysym.sym == SDLK_LEFT)
 				{
-					player.m_x-= 200 * deltaTime;
+					PlayerShip.KeyMoveLeft() * deltaTime;	
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
 				{
-					player.m_y+= 200 * deltaTime;
+					PlayerShip.KeyMoveDown() * deltaTime;	
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
-					player.m_x+= 200 * deltaTime;
+					PlayerShip.KeyMoveRight() * deltaTime;	
 				}		
-				break;
-
-			case SDL_KEYUP:
-				if (sdlEvent.key.keysym.sym == SDLK_BACKSPACE)
-				{
-					Mix_PlayChannel(-1, coinsSFX, 0);
-				} 
 				break;
 
 			case SDL_MOUSEBUTTONDOWN:
 				if (sdlEvent.button.button == SDL_BUTTON_LEFT)
 				{
-					int x;
-					int y;
-					//SDL_GetRelativeMouseState(&x, &y);
-					SDL_GetMouseState(&x, &y);
-					//std::cout << "X pos is: " << x << "Y pos is: " << y << std::endl;
+					Mix_PlayChannel(-1, LaserSFX, 0);	
+					//PlayerShip.Shoot()
 				}
 				break;
 
 			case SDL_MOUSEMOTION:
-				//int mouseX = sdlEvent.motion.x;
-				//int mouseY = sdlEvent.motion.y;
-				//std::cout << "X pos is: " << sdlEvent.motion.x << " Y pos is: " << sdlEvent.motion.y << std::endl;
-				ShipX = sdlEvent.motion.x;
-				ShipY = sdlEvent.motion.y;
+				
+				PlayerShip.m_x = sdlEvent.motion.x;
+				PlayerShip.m_y = sdlEvent.motion.y;
 				break;
 
 			default:
@@ -218,14 +201,13 @@ int main(int argc, char* argv[])
 		//Rendering
 		//Clear the rendering context
 		SDL_RenderClear(g_sdlRenderer);
+		//Render the background		
+		SDL_Rect destinationRectB{ 0,0,750,960 };
+		SDL_RenderCopy(g_sdlRenderer, Background, NULL, &destinationRectB);
 
-		player.Draw(g_sdlRenderer);
-
-		//Create a destination or where an image will be copied too
-		SDL_Rect destinationRect{ 0 ,0,100,100 };
-		//Copy the texture onto the rendering target
-		//SDL_RenderCopy(g_sdlRenderer, Texture, NULL, &destinationRect);
-		//SDL_RenderCopy(g_sdlRenderer, TextureB, NULL, &destinationRectB);
+		//Render the player ship
+		PlayerShip.Draw(g_sdlRenderer);
+		SDL_Rect destinationRect{ PlayerShip.m_x -10 ,PlayerShip.m_y-10,100,100 };		
 
 		//Text Rendering
 		/*SDL_Rect fontDstRect{ 25, 100, 300, 32 };
@@ -236,13 +218,13 @@ int main(int argc, char* argv[])
 
 		//Halt execution for 16 milliseconds (approx 60 fps)
 		SDL_Delay(25);
-	};
-						
+	};	
 	
 	//Clean Up
-	SDL_DestroyTexture(Texture);
+	SDL_DestroyTexture(P_Ship);
+	SDL_DestroyTexture(Background);	
 	//SDL_DestroyTexture(textTexture);
-	Mix_FreeChunk(coinsSFX);
+	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);
 	
 	CleanUp();
