@@ -3,6 +3,7 @@
 #include "SDL_image.h"
 #include "SDL_mixer.h"
 #include "SDL_ttf.h"
+#include "GameObject.h"
 
 SDL_Renderer* g_sdlRenderer;
 SDL_Window* g_sdlWindow;
@@ -120,6 +121,7 @@ int main(int argc, char* argv[])
 
 	//Load textures
 	SDL_Texture* Texture = LoadTexture("Assets/door.png");
+	GameObject player{ Texture };
 	//SDL_Texture* TextureC = LoadTexture("PlayerShip.bmp");
 
 	//Load Sound Effects
@@ -130,16 +132,22 @@ int main(int argc, char* argv[])
 	Mix_PlayMusic(Music, -1);
 
 	//Load Fonts
-	SDL_Surface* textSurface = TTF_RenderText_Blended(g_font, "Hello World", { 255,255,255,255 });
+	/*SDL_Surface* textSurface = TTF_RenderText_Blended(g_font, "Hello World", { 255,255,255,255 });
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, textSurface);
-	SDL_FreeSurface(textSurface);
+	SDL_FreeSurface(textSurface);*/
 	
 	int ShipX = 300;
 	int ShipY = 800;
 
+	Uint32 previousFrameTicks = SDL_GetTicks();
+
+
 	bool keepRunning = true;
 	while (keepRunning)
 	{
+		float deltaTime = (SDL_GetTicks() - (float)(previousFrameTicks)) / 1000;
+		previousFrameTicks = SDL_GetTicks();
+
 		
 		SDL_Event sdlEvent;
 		while (SDL_PollEvent(&sdlEvent))
@@ -160,19 +168,19 @@ int main(int argc, char* argv[])
 				
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
 				{
-					ShipY--;
+					player.m_y-= 200 * deltaTime;
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_a || sdlEvent.key.keysym.sym == SDLK_LEFT)
 				{
-					ShipX--;
+					player.m_x-= 200 * deltaTime;
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_s || sdlEvent.key.keysym.sym == SDLK_DOWN)
 				{
-					ShipY++;
+					player.m_y+= 200 * deltaTime;
 				}
 				else if (sdlEvent.key.keysym.sym == SDLK_d || sdlEvent.key.keysym.sym == SDLK_RIGHT)
 				{
-					ShipX++;
+					player.m_x+= 200 * deltaTime;
 				}		
 				break;
 
@@ -211,15 +219,17 @@ int main(int argc, char* argv[])
 		//Clear the rendering context
 		SDL_RenderClear(g_sdlRenderer);
 
+		player.Draw(g_sdlRenderer);
+
 		//Create a destination or where an image will be copied too
 		SDL_Rect destinationRect{ 0 ,0,100,100 };
 		//Copy the texture onto the rendering target
-		SDL_RenderCopy(g_sdlRenderer, Texture, NULL, &destinationRect);
+		//SDL_RenderCopy(g_sdlRenderer, Texture, NULL, &destinationRect);
 		//SDL_RenderCopy(g_sdlRenderer, TextureB, NULL, &destinationRectB);
 
 		//Text Rendering
-		SDL_Rect fontDstRect{ 25, 100, 300, 32 };
-		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDstRect);
+		/*SDL_Rect fontDstRect{ 25, 100, 300, 32 };
+		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDstRect);*/
 				
 		//Update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
@@ -231,7 +241,7 @@ int main(int argc, char* argv[])
 	
 	//Clean Up
 	SDL_DestroyTexture(Texture);
-	SDL_DestroyTexture(textTexture);
+	//SDL_DestroyTexture(textTexture);
 	Mix_FreeChunk(coinsSFX);
 	Mix_FreeMusic(Music);
 	
