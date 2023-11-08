@@ -27,7 +27,6 @@ float Ship::KeyMoveRight()
 {
 	m_x+= speed;
 	return m_x;
-
 }
 
 

@@ -1,12 +1,8 @@
 ﻿  main.cpp
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(166,29): warning C4552: '*': result of expression not used
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(170,31): warning C4552: '*': result of expression not used
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(174,31): warning C4552: '*': result of expression not used
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(178,32): warning C4552: '*': result of expression not used
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(192,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(193,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(210,44): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(210,44): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(210,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\main.cpp(210,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  SpaceShooterProj-CGP.vcxproj -> D:\Uni Year 2\Computer Games Programming\SpaceShooterCGP\SpaceShooter Project\x64\Debug\SpaceShooterProj-CGP.exe
+C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(168,29): warning C4552: '*': result of expression not used
+C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(172,31): warning C4552: '*': result of expression not used
+C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(176,31): warning C4552: '*': result of expression not used
+C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(180,32): warning C4552: '*': result of expression not used
+C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(194,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(195,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+  SpaceShooterProj-CGP.vcxproj -> C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\x64\Debug\SpaceShooterProj-CGP.exe

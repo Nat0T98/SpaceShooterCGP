@@ -4,6 +4,9 @@
 #include "SDL_mixer.h"
 #include "SDL_ttf.h"
 #include "Ship.h"
+#include "Collision.h"
+#include "Enemy.h"
+
 
 SDL_Renderer* g_sdlRenderer;
 SDL_Window* g_sdlWindow;
@@ -37,7 +40,6 @@ bool Initialise()
 	{
 		std::cout << "Failed to initialise SDL. SDL Errors; " << SDL_GetError() << std::endl;
 		return true;
-
 	}
 
 	// Create a window with the specified name, anywhere on the screen, 800x600 pixel size and no SDL_WindowFlags flags.
@@ -107,8 +109,6 @@ void CleanUp()
 	Mix_Quit();
 	TTF_Quit();
 	SDL_Quit(); //Opposite of SDL_Init(...)
-
-
 }
 
 int main(int argc, char* argv[])
@@ -122,6 +122,8 @@ int main(int argc, char* argv[])
 	//Load textures
 	SDL_Texture* P_Ship = LoadTexture("Assets/PlayerShip.png");
 	Ship PlayerShip{ P_Ship };
+	SDL_Texture* E_Ship = LoadTexture("Assets/enemyBlue.png");
+	Enemy EnemyShip{ E_Ship };
 	SDL_Texture* Background = LoadTexture("Assets/background.png");
 
 	//Load Sound Effects
@@ -198,16 +200,32 @@ int main(int argc, char* argv[])
 			}
 		}		
 
+		//Collision
+		//Ship Player{ PlayerShip };		
+		//Enemy EnemyShip{ EnemyShip };
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2,   PlayerShip.m_y + PlayerShip.m_h/2,    PlayerShip.m_w/2,
+										EnemyShip.m_x + EnemyShip.m_w/2, EnemyShip.m_y + EnemyShip.m_h/2,  EnemyShip.m_w/2))
+		{
+			std::cout << "Collision Detected" << std::endl;
+		}
+
+
 		//Rendering
 		//Clear the rendering context
 		SDL_RenderClear(g_sdlRenderer);
 		//Render the background		
-		SDL_Rect destinationRectB{ 0,0,750,960 };
-		SDL_RenderCopy(g_sdlRenderer, Background, NULL, &destinationRectB);
+		SDL_Rect BackgroundRect{ 0,0,750,960 };
+		SDL_RenderCopy(g_sdlRenderer, Background, NULL, &BackgroundRect);
 
 		//Render the player ship
 		PlayerShip.Draw(g_sdlRenderer);
-		SDL_Rect destinationRect{ PlayerShip.m_x -10 ,PlayerShip.m_y-10,100,100 };		
+		//SDL_Rect PlayerDRect{ PlayerShip.m_x ,PlayerShip.m_y,100,100 };	
+
+		//Render the enemy ship
+		EnemyShip.Draw(g_sdlRenderer);
+		//SDL_Rect EnemyRect{ EnemyShip.m_x, EnemyShip.m_y, 100, 100 };
+		
+
 
 		//Text Rendering
 		/*SDL_Rect fontDstRect{ 25, 100, 300, 32 };
@@ -219,10 +237,12 @@ int main(int argc, char* argv[])
 		//Halt execution for 16 milliseconds (approx 60 fps)
 		SDL_Delay(25);
 	};	
-	
+		
+
 	//Clean Up
 	SDL_DestroyTexture(P_Ship);
 	SDL_DestroyTexture(Background);	
+	SDL_DestroyTexture(E_Ship);
 	//SDL_DestroyTexture(textTexture);
 	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);

@@ -13,7 +13,7 @@ public:
 
 	SDL_Texture* m_texture = nullptr;
 
-	void Draw(SDL_Renderer* renderer);
+	virtual void Draw(SDL_Renderer* renderer);
 
 };
 
