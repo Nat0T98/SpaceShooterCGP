@@ -120,11 +120,21 @@ int main(int argc, char* argv[])
 	}
 
 	//Load textures
-	SDL_Texture* P_Ship = LoadTexture("Assets/PlayerShip.png");
+	SDL_Texture* P_Ship = LoadTexture("Assets/spacecraft.png");
 	Ship PlayerShip{ P_Ship };
-	SDL_Texture* E_Ship = LoadTexture("Assets/enemyBlue.png");
+	PlayerShip.isAnimated = true;	
+	PlayerShip.animationSpeed = 5;	
+	PlayerShip.animPixelWidth = 90;	
+	PlayerShip.animPixelHeight = 128;	
+	PlayerShip.animState = 0;	
+	PlayerShip.animFrames = 3;
+
+	SDL_Texture* E_Ship = LoadTexture("Assets/enemyRed.png");	
 	Enemy EnemyShip{ E_Ship };
-	SDL_Texture* Background = LoadTexture("Assets/background.png");
+
+
+	SDL_Texture* Background = LoadTexture("Assets/background.png");	
+	
 
 	//Load Sound Effects
 	Mix_Chunk* LaserSFX = Mix_LoadWAV("Assets/laser6.mp3");
@@ -201,12 +211,13 @@ int main(int argc, char* argv[])
 		}		
 
 		//Collision
-		//Ship Player{ PlayerShip };		
-		//Enemy EnemyShip{ EnemyShip };
+		
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2,   PlayerShip.m_y + PlayerShip.m_h/2,    PlayerShip.m_w/2,
 										EnemyShip.m_x + EnemyShip.m_w/2, EnemyShip.m_y + EnemyShip.m_h/2,  EnemyShip.m_w/2))
 		{
 			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+
 		}
 
 
@@ -219,14 +230,12 @@ int main(int argc, char* argv[])
 
 		//Render the player ship
 		PlayerShip.Draw(g_sdlRenderer);
-		//SDL_Rect PlayerDRect{ PlayerShip.m_x ,PlayerShip.m_y,100,100 };	
+		PlayerShip.timeInAnimationState = SDL_GetTicks() / 1000.0f;
+		
 
 		//Render the enemy ship
 		EnemyShip.Draw(g_sdlRenderer);
-		//SDL_Rect EnemyRect{ EnemyShip.m_x, EnemyShip.m_y, 100, 100 };
 		
-
-
 		//Text Rendering
 		/*SDL_Rect fontDstRect{ 25, 100, 300, 32 };
 		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDstRect);*/
