@@ -1,8 +1,8 @@
 ﻿  main.cpp
-C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(178,29): warning C4552: '*': result of expression not used
-C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(182,31): warning C4552: '*': result of expression not used
-C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(186,31): warning C4552: '*': result of expression not used
-C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(190,32): warning C4552: '*': result of expression not used
-C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(204,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\main.cpp(205,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-  SpaceShooterProj-CGP.vcxproj -> C:\Users\6jowen88\Downloads\SpaceShooterCGP\SpaceShooter Project\x64\Debug\SpaceShooterProj-CGP.exe
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(178,29): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(182,31): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(186,31): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(190,32): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(204,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(205,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+  SpaceShooterProj-CGP.vcxproj -> C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\x64\Debug\SpaceShooterProj-CGP.exe

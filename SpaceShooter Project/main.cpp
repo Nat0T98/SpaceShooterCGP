@@ -137,9 +137,9 @@ int main(int argc, char* argv[])
 	
 
 	//Load Sound Effects
-	Mix_Chunk* LaserSFX = Mix_LoadWAV("Assets/laser6.mp3");
+	Mix_Chunk* LaserSFX = Mix_LoadWAV("Assets/laser4.mp3");
 	//Load Music File
-	Mix_Music* Music = Mix_LoadMUS("Music/Music1.mp3");
+	Mix_Music* Music = Mix_LoadMUS("Music/Music2.mp3");
 	//Play Music with inifinte looping
 	Mix_PlayMusic(Music, -1);
 
