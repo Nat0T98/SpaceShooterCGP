@@ -18,6 +18,4 @@ bool Collision::CircleCollision(float c1X, float c1Y, float r1, float c2X, float
 	{
 		return false;
 	}
-
-
 }

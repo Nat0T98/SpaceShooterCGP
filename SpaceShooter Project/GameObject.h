@@ -1,11 +1,31 @@
+#include <iostream>
 #pragma once
-#include "SDL.h"
+#include <string>
+#include <stdlib.h>
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <SDL_mixer.h>
+#include <vector>
+
 class GameObject
 {
+private:
+	int	_width;
+	int	_height;
+	int	_x;
+	int	_y;
+	SDL_Texture* _texture;
 
 public:
+	
 	GameObject(SDL_Texture* texture);
 	GameObject();
+
+	int MaxEnCount = 100;
+	int MaxMetCount = 20;
+	
+
 	float m_x = 100; //x pos
 	float m_y = 100; //y pos
 	float m_w = 40; //width
@@ -23,85 +43,17 @@ public:
 	float timeInAnimationState = 0;
 	float animationSpeed = 1;
 
+	int				getWidth(void);
+	int				getHeight(void);
+	int				getX(void);
+	int				getY(void);
+	SDL_Texture* getTexture(void);
+
+	void			setWidth(int width);
+	void			setHeight(int height);
+	void			setX(int x);
+	void			setY(int y);
+	
 };
 
-//#ifndef AUNIT_CLASS_HPP
-//#define AUNIT_CLASS_HPP
-//
-//#include "SpaceShooter.hpp"
-//
-//class AUnit {
-//
-//private:
-//	int				_width;
-//	int				_height;
-//	int				_x;
-//	int				_y;
-//	SDL_Texture* _texture;
-//
-//public:
-//	AUnit(void);
-//	~AUnit(void);
-//
-//	int				getWidth(void);
-//	int				getHeight(void);
-//	int				getX(void);
-//	int				getY(void);
-//	SDL_Texture* getTexture(void);
-//
-//	void			setWidth(int width);
-//	void			setHeight(int height);
-//	void			setX(int x);
-//	void			setY(int y);
-//
-//	bool			load(std::string path, t_settings& settings);
-//	void			free(void);
-//	void			render(t_settings& settings);
-//
-//	virtual void	moveDown(void) = 0;
-//	virtual void	moveRight(void);
-//	virtual void	moveLeft(void);
-//	virtual void	moveUp(void);
-//
-//};
-//
-//#endif
 
-
-
-
-
-
-//class Background {
-//
-//private:
-//	Enemy* _enemies[ENEMY_MAX_QUANTITY];
-//	Meteor* _meteors[METEOR_MAX_QUANTITY];
-//	Star* _stars[STAR_MAX_QUANTITY];
-//	SDL_Texture* _texture;
-//
-//public:
-//	Background(void);
-//	~Background(void);
-//
-//	void	free(void);
-//	void	clean(void);
-//	void	loadGameOver(std::string, t_settings&);
-//	void	drawInfoBox(Player&, t_settings&, unsigned long);
-//
-//	void	makeStar(t_settings&);
-//	void	makeMeteor(t_settings&);
-//	void	makeEnemy(t_settings&);
-//
-//	void	displayStar(t_settings&);
-//	void	displayMeteor(t_settings&, bool);
-//	void	displayEnemy(t_settings&, bool);
-//
-//	bool	hitEnemy(Player& player);
-//	bool	hitMeteor(Player& player);
-//
-//	void	killEnemy(Player& player);
-//	void	killMeteor(Player& player);
-//
-//
-//};
