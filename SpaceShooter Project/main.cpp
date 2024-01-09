@@ -11,6 +11,7 @@
 #include "Laser.h"
 #include "Comet.h"
 #include "Background.h"
+#include "PickUps.h"
 
 SDL_Renderer* g_sdlRenderer;
 SDL_Window* g_sdlWindow;
@@ -157,9 +158,11 @@ int main(int argc, char* argv[])
 	SDL_Texture* _Comet3 = LoadTexture("Assets/Comet.png");
 	Comet Comet3{ _Comet3 };
 
-
 	SDL_Texture* _Background1 = LoadTexture("Assets/background.png");
 	Background Background1{ _Background1 };
+
+	SDL_Texture* _HP1 = LoadTexture("Assets/HP.png");
+	PickUps HP1{ _HP1 };	
 	
 	SDL_Texture* _Laser = LoadTexture("Assets/pBullet1.png");
 	Laser Lasers{ _Laser };
@@ -200,6 +203,9 @@ int main(int argc, char* argv[])
 	SDL_Texture* HealthNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, HealthNum);
 	SDL_FreeSurface(HealthNum);
 
+	SDL_Surface* GOver = TTF_RenderText_Blended(g_font, "", { 255, 255, 255, 255 });
+	SDL_Texture* GOverTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, GOver);
+	SDL_FreeSurface(GOver);
 
 #pragma endregion
 		
@@ -268,7 +274,7 @@ int main(int argc, char* argv[])
 			//Lasers.m_x = PlayerShip.m_x;
 			//Lasers.m_y = PlayerShip.m_y;
 			
-#pragma region Enemy move functions
+#pragma region Object move functions
 			EnemyShip1.MoveDown()* deltaTime;
 			EnemyShip1.resetEnPos();
 			EnemyShip2.MoveDown()* deltaTime;
@@ -291,6 +297,10 @@ int main(int argc, char* argv[])
 			Comet2.resetCometPos();
 			Comet3.MoveDown()* deltaTime;
 			Comet3.resetCometPos();
+
+			HP1.MoveDown()* deltaTime;
+			HP1.resetPickUpPos();
+
 #pragma endregion
 		}		
 #pragma region Collion against player
@@ -370,6 +380,20 @@ int main(int argc, char* argv[])
 			//keepRunning = false;
 		}
 
+		//HP Pick up Collison
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+			HP1.m_x + HP1.m_w / 2, HP1.m_y + HP1.m_h / 2, HP1.m_w / 2))
+		{
+			PlayerShip.health += HP1.HpPickUpVal;
+			if (PlayerShip.health >= PlayerShip.maxHealth)
+			{
+				PlayerShip.health = PlayerShip.maxHealth;
+			}
+			
+			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//keepRunning = false;
+		}
+
 		HealthStr = std::to_string(PlayerShip.health);
 		SDL_Surface* HealthNum = TTF_RenderText_Blended(g_font, HealthStr.c_str(), { 255, 255, 255, 255 });
 		SDL_Texture* HealthNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, HealthNum);
@@ -378,17 +402,18 @@ int main(int argc, char* argv[])
 		if (PlayerShip.health <= PlayerShip.minHealth)
 		{
 			PlayerShip.dead();
-			keepRunning = false;
+						
 		}
+
+		
+		
 #pragma endregion
 
 #pragma region Rendering
 //Rendering
 		//Clear the rendering context
 		SDL_RenderClear(g_sdlRenderer);
-		//Render the background		
-		/*SDL_Rect BackgroundRect{0,0,750,960};
-		SDL_RenderCopy(g_sdlRenderer, Background, NULL, &BackgroundRect);*/
+		
 		Background1.Draw(g_sdlRenderer);
 		
 		//Render the player ship
@@ -398,7 +423,7 @@ int main(int argc, char* argv[])
 		Lasers.Draw(g_sdlRenderer);	
 		
 
-		//Render the hostiles
+		//Render objects
 		EnemyShip1.Draw(g_sdlRenderer);
 		EnemyShip2.Draw(g_sdlRenderer);
 		EnemyShip3.Draw(g_sdlRenderer);
@@ -409,6 +434,7 @@ int main(int argc, char* argv[])
 		Comet1.Draw(g_sdlRenderer);	
 		Comet2.Draw(g_sdlRenderer);
 		Comet3.Draw(g_sdlRenderer);
+		HP1.Draw(g_sdlRenderer);
 		
 		
 		//Text Rendering
@@ -421,6 +447,26 @@ int main(int argc, char* argv[])
 		SDL_RenderCopy(g_sdlRenderer, HealthTexture, NULL, &HealthTxtRect);
 		SDL_Rect HealthNumRect{ 100, 110, 30, 28 };
 		SDL_RenderCopy(g_sdlRenderer, HealthNumTexture, NULL, &HealthNumRect);
+
+		/*SDL_Rect GameOverRect{ 400, 300, 100, 28 };
+		SDL_RenderCopy(g_sdlRenderer, GOverTexture, NULL, &GameOverRect);*/
+
+		if (PlayerShip.health <= PlayerShip.minHealth) 
+		{
+			
+			SDL_Surface* gameOverSurface = TTF_RenderText_Blended(g_font, "GAME OVER", { 255, 0, 0, 255 });
+			SDL_Texture* gameOverTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, gameOverSurface);
+			SDL_FreeSurface(gameOverSurface);
+
+			SDL_Rect gameOverRect = { 230, 450, 300, 56 };
+			SDL_RenderCopy(g_sdlRenderer, gameOverTexture, nullptr, &gameOverRect);
+			SDL_DestroyTexture(gameOverTexture);
+			HP1.HpPickUpVal = 0;
+			SDL_DestroyTexture(P_Ship);
+			
+		}
+		
+
 				
 		//Update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
@@ -446,10 +492,12 @@ int main(int argc, char* argv[])
 	SDL_DestroyTexture(_Comet1);	
 	SDL_DestroyTexture(_Comet2);	
 	SDL_DestroyTexture(_Comet3);	
+	SDL_DestroyTexture(_HP1);
 	SDL_DestroyTexture(RemEnTexture);	
 	SDL_DestroyTexture(enemyNumTexture);	
 	SDL_DestroyTexture(HealthTexture);
 	SDL_DestroyTexture(HealthNumTexture);
+	SDL_DestroyTexture(GOverTexture);
 	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);
 	

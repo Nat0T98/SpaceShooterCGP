@@ -26,6 +26,7 @@ public:
 	const int enemyDamage = 2;
 	const int meteorDamage = 3;
 	const int cometDamage = 1;
+	int HpPickUpVal = 50;
 
 	int enemiesRemaining = 10;
 	float m_x; //x pos
@@ -54,14 +55,15 @@ public:
 	void resetEnPos();
 	void resetMetPos();
 	void resetCometPos();
+	void resetPickUpPos();
 	void randXpos();
 	void randYpos();
 	void randMetWidth();
 	void randMetHeight();
 	void randCometWidth();
 	void randCometHeight();
-	void setBackgroundPos();
-	void setBackStartPos();
+	
+	
 };
 
 

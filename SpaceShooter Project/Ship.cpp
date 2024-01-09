@@ -64,6 +64,10 @@ void Ship::ShipBounds()
 bool Ship::dead()
 {
 	if (health <= minHealth)
+	{
+		health = minHealth;
+		//SDL_Delay(10000);
+	}
 	return isDead = true;
 }
 

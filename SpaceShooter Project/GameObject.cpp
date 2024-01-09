@@ -114,17 +114,6 @@ void GameObject::randCometHeight()
 	m_h = dist(ch);	
 }
 
-void GameObject::setBackgroundPos()
-{
-	if (m_y >= 960)
-	{
-		m_y = -960;
-	}
-}
-void GameObject::setBackStartPos()
-{
-	m_y = -960;
-}
 
 
 void GameObject::resetCometPos()
@@ -135,5 +124,14 @@ void GameObject::resetCometPos()
 		randYpos();
 		randCometHeight();
 		randCometWidth();
+	};
+}
+
+void GameObject::resetPickUpPos()
+{
+	if (m_y >= 950)
+	{
+		randXpos();	
+		randYpos();
 	};
 }

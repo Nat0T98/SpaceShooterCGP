@@ -141,6 +141,7 @@
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Meteor.cpp" />
+    <ClCompile Include="PickUps.cpp" />
     <ClCompile Include="Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +152,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Meteor.h" />
+    <ClInclude Include="PickUps.h" />
     <ClInclude Include="Ship.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
