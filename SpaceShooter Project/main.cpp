@@ -142,17 +142,23 @@ int main(int argc, char* argv[])
 	Enemy EnemyShip2{ E_Ship2 }; 
 	SDL_Texture* E_Ship3 = LoadTexture("Assets/enemyBlue.png");
 	Enemy EnemyShip3{ E_Ship3 };
+	SDL_Texture* E_Ship4 = LoadTexture("Assets/enemyBlack.png");
+	Enemy EnemyShip4{ E_Ship4 };
 
 
 	SDL_Texture* _Meteors1 = LoadTexture("Assets/Meteor.png");
 	Meteor Meteor1{ _Meteors1 };
 	SDL_Texture* _Meteors2 = LoadTexture("Assets/Meteor.png");
 	Meteor Meteor2{ _Meteors2 };
+	SDL_Texture* _Meteors3 = LoadTexture("Assets/Meteor.png");
+	Meteor Meteor3{ _Meteors3 };
 
 	SDL_Texture* _Comet1 = LoadTexture("Assets/Comet.png");
 	Comet Comet1{ _Comet1 };
 	SDL_Texture* _Comet2 = LoadTexture("Assets/Comet.png");
 	Comet Comet2{ _Comet2 };
+	SDL_Texture* _Comet3 = LoadTexture("Assets/Comet.png");
+	Comet Comet3{ _Comet3 };
 
 
 	SDL_Texture* Background = LoadTexture("Assets/background.png");
@@ -240,16 +246,22 @@ int main(int argc, char* argv[])
 			EnemyShip2.resetEnPos();
 			EnemyShip3.MoveDown()* deltaTime;
 			EnemyShip3.resetEnPos();
+			EnemyShip4.MoveDown()* deltaTime;
+			EnemyShip4.resetEnPos();
 
 			Meteor1.MoveDown()* deltaTime;
 			Meteor1.resetMetPos();
 			Meteor2.MoveDown()* deltaTime;
 			Meteor2.resetMetPos();
+			Meteor3.MoveDown()* deltaTime;
+			Meteor3.resetMetPos();
 
 			Comet1.MoveDown()* deltaTime;
 			Comet1.resetCometPos();	
 			Comet2.MoveDown()* deltaTime;
 			Comet2.resetCometPos();
+			Comet3.MoveDown()* deltaTime;
+			Comet3.resetCometPos();
 
 
 			Lasers.Move()* deltaTime;
@@ -304,10 +316,13 @@ int main(int argc, char* argv[])
 		EnemyShip1.Draw(g_sdlRenderer);
 		EnemyShip2.Draw(g_sdlRenderer);
 		EnemyShip3.Draw(g_sdlRenderer);
+		EnemyShip4.Draw(g_sdlRenderer);
 		Meteor1.Draw(g_sdlRenderer);
 		Meteor2.Draw(g_sdlRenderer);	
+		Meteor3.Draw(g_sdlRenderer);	
 		Comet1.Draw(g_sdlRenderer);	
 		Comet2.Draw(g_sdlRenderer);
+		Comet3.Draw(g_sdlRenderer);
 		
 		PlayerShip.ShipBounds();
 		//Text Rendering
@@ -328,10 +343,13 @@ int main(int argc, char* argv[])
 	SDL_DestroyTexture(E_Ship1);
 	SDL_DestroyTexture(E_Ship2);
 	SDL_DestroyTexture(E_Ship3);
+	SDL_DestroyTexture(E_Ship4);
 	SDL_DestroyTexture(_Meteors1);
 	SDL_DestroyTexture(_Meteors2);	
+	SDL_DestroyTexture(_Meteors3);	
 	SDL_DestroyTexture(_Comet1);	
 	SDL_DestroyTexture(_Comet2);	
+	SDL_DestroyTexture(_Comet3);	
 	//SDL_DestroyTexture(textTexture);
 	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);
