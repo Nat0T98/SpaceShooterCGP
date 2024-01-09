@@ -67,6 +67,11 @@ bool Ship::dead()
 	return isDead = true;
 }
 
+int Ship::getHealth()
+{
+	return health;
+}
+
 
 
 

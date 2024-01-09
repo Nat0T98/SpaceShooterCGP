@@ -174,6 +174,12 @@ int main(int argc, char* argv[])
 	//Play Music with inifinte looping
 	Mix_PlayMusic(Music, -1);
 #pragma endregion
+	
+	PlayerShip.health;	
+	std::string HealthStr = std::to_string(PlayerShip.health);
+	std::string enemyStr = std::to_string(EnemyShip1.enemiesRemaining);
+	
+	
 
 #pragma region ttf
 //Remaining enemies title
@@ -181,12 +187,18 @@ int main(int argc, char* argv[])
 	SDL_Texture* RemEnTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, RemEnem);
 	SDL_FreeSurface(RemEnem);
 
+	SDL_Surface* enemyNum = TTF_RenderText_Blended(g_font, enemyStr.c_str(), { 255,255,255,255 });
+	SDL_Texture* enemyNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, enemyNum);
+	SDL_FreeSurface(enemyNum);
+
 	SDL_Surface* RemHealth = TTF_RenderText_Blended(g_font, "Health: ", { 255,255,255,255 });
 	SDL_Texture* HealthTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, RemHealth);
 	SDL_FreeSurface(RemHealth);
 
 
-
+	SDL_Surface* HealthNum = TTF_RenderText_Blended(g_font, HealthStr.c_str(), {255,255,255,255});
+	SDL_Texture* HealthNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, HealthNum);
+	SDL_FreeSurface(HealthNum);
 
 
 #pragma endregion
@@ -250,6 +262,8 @@ int main(int argc, char* argv[])
 				break;
 			}
 
+			
+
 			Lasers.Move()* deltaTime;
 			//Lasers.m_x = PlayerShip.m_x;
 			//Lasers.m_y = PlayerShip.m_y;
@@ -285,28 +299,28 @@ int main(int argc, char* argv[])
 										EnemyShip1.m_x + EnemyShip1.m_w/2, EnemyShip1.m_y + EnemyShip1.m_h/2,  EnemyShip1.m_w/2))
 		{
 			PlayerShip.health -= EnemyShip1.enemyDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 										EnemyShip2.m_x + EnemyShip2.m_w / 2, EnemyShip2.m_y + EnemyShip2.m_h / 2, EnemyShip2.m_w / 2))
 		{
 			PlayerShip.health -= EnemyShip2.enemyDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			EnemyShip3.m_x + EnemyShip3.m_w / 2, EnemyShip3.m_y + EnemyShip3.m_h / 2, EnemyShip3.m_w / 2))
 		{
 			PlayerShip.health -= EnemyShip3.enemyDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			EnemyShip4.m_x + EnemyShip4.m_w / 2, EnemyShip4.m_y + EnemyShip4.m_h / 2, EnemyShip4.m_w / 2))
 		{
 			PlayerShip.health -= EnemyShip4.enemyDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 
@@ -315,21 +329,21 @@ int main(int argc, char* argv[])
 										Meteor1.m_x + Meteor1.m_w / 2, Meteor1.m_y + Meteor1.m_h / 2, Meteor1.m_w / 2))
 		{
 			PlayerShip.health -= Meteor1.meteorDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 										Meteor2.m_x + Meteor2.m_w / 2, Meteor2.m_y + Meteor2.m_h / 2, Meteor2.m_w / 2))
 		{
 			PlayerShip.health -= Meteor2.meteorDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			Meteor3.m_x + Meteor3.m_w / 2, Meteor3.m_y + Meteor3.m_h / 2, Meteor3.m_w / 2))
 		{
 			PlayerShip.health -= Meteor3.meteorDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 
@@ -338,23 +352,28 @@ int main(int argc, char* argv[])
 			Comet1.m_x + Comet1.m_w / 2, Comet1.m_y + Comet1.m_h / 2, Comet1.m_w / 2))
 		{
 			PlayerShip.health -= Comet1.cometDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			Comet2.m_x + Comet2.m_w / 2, Comet2.m_y + Comet2.m_h / 2, Comet2.m_w / 2))
 		{
 			PlayerShip.health -= Comet2.cometDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			Comet3.m_x + Comet3.m_w / 2, Comet3.m_y + Comet3.m_h / 2, Comet3.m_w / 2))
 		{
 			PlayerShip.health -= Comet3.cometDamage;
-			std::cout << "Collision Detected" << std::endl;
+			std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
+
+		HealthStr = std::to_string(PlayerShip.health);
+		SDL_Surface* HealthNum = TTF_RenderText_Blended(g_font, HealthStr.c_str(), { 255, 255, 255, 255 });
+		SDL_Texture* HealthNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, HealthNum);
+		SDL_FreeSurface(HealthNum);
 
 		if (PlayerShip.health <= PlayerShip.minHealth)
 		{
@@ -395,9 +414,13 @@ int main(int argc, char* argv[])
 		//Text Rendering
 		SDL_Rect RemEnRect{ 5, 75, 200, 28 };
 		SDL_RenderCopy(g_sdlRenderer, RemEnTexture, NULL, &RemEnRect);
+		SDL_Rect RemEnNumRect{ 200, 75, 30, 28 };
+		SDL_RenderCopy(g_sdlRenderer, enemyNumTexture, NULL, &RemEnNumRect);	
 
 		SDL_Rect HealthTxtRect{ 5, 110, 100, 28 };
 		SDL_RenderCopy(g_sdlRenderer, HealthTexture, NULL, &HealthTxtRect);
+		SDL_Rect HealthNumRect{ 100, 110, 30, 28 };
+		SDL_RenderCopy(g_sdlRenderer, HealthNumTexture, NULL, &HealthNumRect);
 				
 		//Update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
@@ -423,8 +446,10 @@ int main(int argc, char* argv[])
 	SDL_DestroyTexture(_Comet1);	
 	SDL_DestroyTexture(_Comet2);	
 	SDL_DestroyTexture(_Comet3);	
-	SDL_DestroyTexture(RemEnTexture);
+	SDL_DestroyTexture(RemEnTexture);	
+	SDL_DestroyTexture(enemyNumTexture);	
 	SDL_DestroyTexture(HealthTexture);
+	SDL_DestroyTexture(HealthNumTexture);
 	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);
 	

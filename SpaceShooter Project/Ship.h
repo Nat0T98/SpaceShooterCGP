@@ -20,6 +20,7 @@ public:
 	float KeyMoveRight();
 	void ShipBounds();
 	bool dead();
+	int getHealth();
 
 private:
 	float speed = 10;

@@ -27,6 +27,7 @@ public:
 	const int meteorDamage = 3;
 	const int cometDamage = 1;
 
+	int enemiesRemaining = 10;
 	float m_x; //x pos
 	float m_y; //y pos
 	float m_w; //width
