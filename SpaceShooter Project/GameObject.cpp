@@ -49,17 +49,27 @@ void GameObject::setY(float y)
 	m_y = -50;
 }
 
+void GameObject::randXpos()
+{
+	std::random_device rx;
+	std::uniform_int_distribution<int> dist(50, 700);
+	m_x = dist(rx);
+}
+
+void GameObject::randYpos()
+{
+	int negative = 500;
+	std::random_device ry;
+	std::uniform_int_distribution<int> dist(0, 500);
+	m_y = dist(ry) - negative;
+
+}
 void GameObject::resetEnPos()
 {
 	if (m_y >= 950)
 	{
-		m_y = -50;
-		std::random_device x;
-		std::uniform_int_distribution<int> dist(50, 700);
-		m_x = dist(x);
-		/*int w = time(0);
-		srand(w);
-		m_x = rand() % 700 + 1*/;
+		randXpos();
+		randYpos();		
 	};
 		
 }
@@ -82,11 +92,8 @@ void GameObject::resetMetPos()
 {
 	if (m_y >= 950)
 	{
-		m_y = -50;
-		std::random_device x;
-		std::uniform_int_distribution<int> dist(50, 700);
-		m_x = dist(x);
-		
+		randXpos();
+		randYpos();
 		randMetHeight();
 		randMetWidth();
 	};

@@ -46,6 +46,8 @@ public:
 	void setY(float y);
 	void resetEnPos();
 	void resetMetPos();
+	void randXpos();
+	void randYpos();
 	void randMetWidth();
 	void randMetHeight();
 	

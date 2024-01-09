@@ -2,7 +2,8 @@
 Meteor::Meteor(SDL_Texture* texture)
 {
 	m_texture = texture;
-	setSpawn();
+	setSpawnX();
+	setSpawnY();
 	m_w = 125; //width
 	m_h = 125; //height
 }
@@ -19,9 +20,18 @@ float Meteor::MoveDown()
 	return m_y;
 }
 
-void Meteor::setSpawn()
+void Meteor::setSpawnX()
 {
 	std::random_device x;
 	std::uniform_int_distribution<int> dist(50, 700);
 	m_x = dist(x);
+}
+
+void Meteor::setSpawnY()
+{
+	int negative = 500;
+	std::random_device y;
+	std::uniform_int_distribution<int> dist(0, 500);
+	m_y = dist(y) - negative;
+
 }

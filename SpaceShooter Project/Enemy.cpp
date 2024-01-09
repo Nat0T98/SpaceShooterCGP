@@ -3,7 +3,8 @@
 Enemy::Enemy(SDL_Texture* texture)
 {
 	m_texture = texture;
-	setSpawn();
+	setSpawnX();
+	setSpawnY();
 	m_w = 50; //width
 	m_h = 50; //height
 }
@@ -20,11 +21,20 @@ float Enemy::MoveDown()
 	return m_y;
 }
 
-void Enemy::setSpawn()
+void Enemy::setSpawnX()
 {
 	std::random_device x;
 	std::uniform_int_distribution<int> dist(50, 700);
 	m_x = dist(x);
+}
+
+void Enemy::setSpawnY()
+{
+	int negative = 500;
+	std::random_device y;
+	std::uniform_int_distribution<int> dist(0, 500);
+	m_y = dist(y) - negative;
+
 }
 
 

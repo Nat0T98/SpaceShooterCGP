@@ -9,7 +9,8 @@ public:
 	void Draw(SDL_Renderer* renderer) override ;
 	float MoveDown();
 	//void DestroyShip(GameObject);
-	void setSpawn();
+	void setSpawnX();
+	void setSpawnY();
 private:
 
 };
