@@ -8,10 +8,9 @@
 #include "Collision.h"
 #include "Enemy.h"
 #include "Meteor.h"
-#include "Timer.h"
 #include "Laser.h"
 #include "Comet.h"
-
+#include "Background.h"
 
 SDL_Renderer* g_sdlRenderer;
 SDL_Window* g_sdlWindow;
@@ -116,8 +115,6 @@ void CleanUp()
 	SDL_Quit(); //Opposite of SDL_Init(...)
 }
 
-
-
 int main(int argc, char* argv[])
 {
 	if (Initialise())
@@ -125,8 +122,8 @@ int main(int argc, char* argv[])
 		std::cout << "Application failed to initialise. Quitting..." << std::endl;
 		return -1;
 	}
-
-	//Load textures
+#pragma region Loading Textures
+//Load textures
 	SDL_Texture* P_Ship = LoadTexture("Assets/spacecraft.png");
 	Ship PlayerShip{ P_Ship };
 	PlayerShip.isAnimated = true;	
@@ -161,26 +158,40 @@ int main(int argc, char* argv[])
 	Comet Comet3{ _Comet3 };
 
 
-	SDL_Texture* Background = LoadTexture("Assets/background.png");
-
+	SDL_Texture* _Background1 = LoadTexture("Assets/background.png");
+	Background Background1{ _Background1 };
+	
 	SDL_Texture* _Laser = LoadTexture("Assets/pBullet1.png");
 	Laser Lasers{ _Laser };
+#pragma endregion
 
-	//Load Sound Effects
+	
+#pragma region SFX
+//Load Sound Effects
 	Mix_Chunk* LaserSFX = Mix_LoadWAV("Assets/laser4.mp3");
 	//Load Music File
 	Mix_Music* Music = Mix_LoadMUS("Music/Music2.mp3");
 	//Play Music with inifinte looping
 	Mix_PlayMusic(Music, -1);
+#pragma endregion
 
+#pragma region ttf
+//Remaining enemies title
+	SDL_Surface* RemEnem = TTF_RenderText_Blended(g_font, "Enemies Remaining: ", {255,255,255,255});
+	SDL_Texture* RemEnTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, RemEnem);
+	SDL_FreeSurface(RemEnem);
+
+	SDL_Surface* RemHealth = TTF_RenderText_Blended(g_font, "Health: ", { 255,255,255,255 });
+	SDL_Texture* HealthTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, RemHealth);
+	SDL_FreeSurface(RemHealth);
+
+
+
+
+
+#pragma endregion
 		
-	// Timer title
-	SDL_Surface* textSurface = TTF_RenderText_Blended(g_font, "Time: ", {255,255,255,255});
-	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, textSurface);
-	SDL_FreeSurface(textSurface);
-	
 	Uint32 previousFrameTicks = SDL_GetTicks();
-
 	bool keepRunning = true;
 	while (keepRunning)
 	{
@@ -238,8 +249,12 @@ int main(int argc, char* argv[])
 			default:
 				break;
 			}
+
+			Lasers.Move()* deltaTime;
+			//Lasers.m_x = PlayerShip.m_x;
+			//Lasers.m_y = PlayerShip.m_y;
 			
-			
+#pragma region Enemy move functions
 			EnemyShip1.MoveDown()* deltaTime;
 			EnemyShip1.resetEnPos();
 			EnemyShip2.MoveDown()* deltaTime;
@@ -257,62 +272,114 @@ int main(int argc, char* argv[])
 			Meteor3.resetMetPos();
 
 			Comet1.MoveDown()* deltaTime;
-			Comet1.resetCometPos();	
+			Comet1.resetCometPos();
 			Comet2.MoveDown()* deltaTime;
 			Comet2.resetCometPos();
 			Comet3.MoveDown()* deltaTime;
 			Comet3.resetCometPos();
-
-
-			Lasers.Move()* deltaTime;
-			//Lasers.m_x = PlayerShip.m_x;
-			//Lasers.m_y = PlayerShip.m_y;
-
+#pragma endregion
 		}		
-
-		//Collision		
+#pragma region Collion against player
+		//Enemy ship collison	
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2,   PlayerShip.m_y + PlayerShip.m_h/2,    PlayerShip.m_w/2,
 										EnemyShip1.m_x + EnemyShip1.m_w/2, EnemyShip1.m_y + EnemyShip1.m_h/2,  EnemyShip1.m_w/2))
 		{
+			PlayerShip.health -= EnemyShip1.enemyDamage;
 			std::cout << "Collision Detected" << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 										EnemyShip2.m_x + EnemyShip2.m_w / 2, EnemyShip2.m_y + EnemyShip2.m_h / 2, EnemyShip2.m_w / 2))
 		{
+			PlayerShip.health -= EnemyShip2.enemyDamage;
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+			EnemyShip3.m_x + EnemyShip3.m_w / 2, EnemyShip3.m_y + EnemyShip3.m_h / 2, EnemyShip3.m_w / 2))
+		{
+			PlayerShip.health -= EnemyShip3.enemyDamage;
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+			EnemyShip4.m_x + EnemyShip4.m_w / 2, EnemyShip4.m_y + EnemyShip4.m_h / 2, EnemyShip4.m_w / 2))
+		{
+			PlayerShip.health -= EnemyShip4.enemyDamage;
 			std::cout << "Collision Detected" << std::endl;
 			//keepRunning = false;
 		}
 
+		//meteor collison
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 										Meteor1.m_x + Meteor1.m_w / 2, Meteor1.m_y + Meteor1.m_h / 2, Meteor1.m_w / 2))
 		{
+			PlayerShip.health -= Meteor1.meteorDamage;
 			std::cout << "Collision Detected" << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 										Meteor2.m_x + Meteor2.m_w / 2, Meteor2.m_y + Meteor2.m_h / 2, Meteor2.m_w / 2))
 		{
+			PlayerShip.health -= Meteor2.meteorDamage;
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+			Meteor3.m_x + Meteor3.m_w / 2, Meteor3.m_y + Meteor3.m_h / 2, Meteor3.m_w / 2))
+		{
+			PlayerShip.health -= Meteor3.meteorDamage;
 			std::cout << "Collision Detected" << std::endl;
 			//keepRunning = false;
 		}
 
+		//comet collision
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+			Comet1.m_x + Comet1.m_w / 2, Comet1.m_y + Comet1.m_h / 2, Comet1.m_w / 2))
+		{
+			PlayerShip.health -= Comet1.cometDamage;
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+			Comet2.m_x + Comet2.m_w / 2, Comet2.m_y + Comet2.m_h / 2, Comet2.m_w / 2))
+		{
+			PlayerShip.health -= Comet2.cometDamage;
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+			Comet3.m_x + Comet3.m_w / 2, Comet3.m_y + Comet3.m_h / 2, Comet3.m_w / 2))
+		{
+			PlayerShip.health -= Comet3.cometDamage;
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
 
-		//Rendering
+		if (PlayerShip.health <= PlayerShip.minHealth)
+		{
+			PlayerShip.dead();
+			keepRunning = false;
+		}
+#pragma endregion
+
+#pragma region Rendering
+//Rendering
 		//Clear the rendering context
 		SDL_RenderClear(g_sdlRenderer);
 		//Render the background		
-		SDL_Rect BackgroundRect{0,0,750,960};
-		SDL_RenderCopy(g_sdlRenderer, Background, NULL, &BackgroundRect);
-
+		/*SDL_Rect BackgroundRect{0,0,750,960};
+		SDL_RenderCopy(g_sdlRenderer, Background, NULL, &BackgroundRect);*/
+		Background1.Draw(g_sdlRenderer);
+		
 		//Render the player ship
 		PlayerShip.Draw(g_sdlRenderer);
 		PlayerShip.timeInAnimationState = SDL_GetTicks() / 1000.0f;
-
+		PlayerShip.ShipBounds();
 		Lasers.Draw(g_sdlRenderer);	
 		
 
-		//Render the enemy ships and meteors
+		//Render the hostiles
 		EnemyShip1.Draw(g_sdlRenderer);
 		EnemyShip2.Draw(g_sdlRenderer);
 		EnemyShip3.Draw(g_sdlRenderer);
@@ -324,22 +391,28 @@ int main(int argc, char* argv[])
 		Comet2.Draw(g_sdlRenderer);
 		Comet3.Draw(g_sdlRenderer);
 		
-		PlayerShip.ShipBounds();
+		
 		//Text Rendering
-		SDL_Rect fontDstRect{ 5, 50, 100, 32 };
-		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDstRect);
+		SDL_Rect RemEnRect{ 5, 75, 200, 28 };
+		SDL_RenderCopy(g_sdlRenderer, RemEnTexture, NULL, &RemEnRect);
+
+		SDL_Rect HealthTxtRect{ 5, 110, 100, 28 };
+		SDL_RenderCopy(g_sdlRenderer, HealthTexture, NULL, &HealthTxtRect);
 				
 		//Update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
 		//Halt execution for 16 milliseconds (approx 60 fps)
 		SDL_Delay(25);
+#pragma endregion
+
+		
 	};	
 		
-
-	//Clean Up
+#pragma region Clean Up
+//Clean Up
 	SDL_DestroyTexture(P_Ship);	
 	SDL_DestroyTexture(_Laser);	
-	SDL_DestroyTexture(Background);	
+	SDL_DestroyTexture(_Background1);	
 	SDL_DestroyTexture(E_Ship1);
 	SDL_DestroyTexture(E_Ship2);
 	SDL_DestroyTexture(E_Ship3);
@@ -350,10 +423,14 @@ int main(int argc, char* argv[])
 	SDL_DestroyTexture(_Comet1);	
 	SDL_DestroyTexture(_Comet2);	
 	SDL_DestroyTexture(_Comet3);	
-	//SDL_DestroyTexture(textTexture);
+	SDL_DestroyTexture(RemEnTexture);
+	SDL_DestroyTexture(HealthTexture);
 	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);
 	
 	CleanUp();
+#pragma endregion
+
+	
 	return 0;
 }

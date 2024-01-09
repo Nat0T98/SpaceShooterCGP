@@ -2,6 +2,7 @@
 
 Ship::Ship(SDL_Texture* texture)
 {
+	health = maxHealth;
 	m_texture = texture;	
 	m_x = 800; //x pos
 	m_y = 300; //y pos
@@ -59,5 +60,13 @@ void Ship::ShipBounds()
 	if (m_y < 0)
 		m_y = 50;
 }
+
+bool Ship::dead()
+{
+	if (health <= minHealth)
+	return isDead = true;
+}
+
+
 
 

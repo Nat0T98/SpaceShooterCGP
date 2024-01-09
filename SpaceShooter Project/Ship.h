@@ -4,6 +4,12 @@
 class Ship : public GameObject
 {
 public:
+	
+	bool isDead;
+	int health;
+	const int maxHealth = 100;
+	const int minHealth = 0;
+
 	Ship(SDL_Texture* texture);
 
 	void Draw(SDL_Renderer* renderer) override;
@@ -13,7 +19,9 @@ public:
 	float KeyMoveLeft();
 	float KeyMoveRight();
 	void ShipBounds();
-	
+	bool dead();
+
 private:
 	float speed = 10;
+	
 };

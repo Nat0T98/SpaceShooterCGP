@@ -18,15 +18,20 @@ public:
 	GameObject(SDL_Texture* texture);
 	GameObject();
 
-	int MaxEnCount = 10;
-	int MaxMetCount = 10;
-	float enemySpeed = 15;
-	float meteorSpeed = 10;
-	float cometSpeed = 20;
+	const float enemySpeed = 15;
+	const float meteorSpeed = 10;
+	const float cometSpeed = 20;
+	const float backgroundSpeed = 1;
+	
+	const int enemyDamage = 2;
+	const int meteorDamage = 3;
+	const int cometDamage = 1;
+
 	float m_x; //x pos
 	float m_y; //y pos
 	float m_w; //width
 	float m_h; //height
+
 	
 
 	bool isAnimated = false;
@@ -54,6 +59,8 @@ public:
 	void randMetHeight();
 	void randCometWidth();
 	void randCometHeight();
+	void setBackgroundPos();
+	void setBackStartPos();
 };
 
 

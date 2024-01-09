@@ -114,6 +114,19 @@ void GameObject::randCometHeight()
 	m_h = dist(ch);	
 }
 
+void GameObject::setBackgroundPos()
+{
+	if (m_y >= 960)
+	{
+		m_y = -960;
+	}
+}
+void GameObject::setBackStartPos()
+{
+	m_y = -960;
+}
+
+
 void GameObject::resetCometPos()
 {
 	if (m_y >= 950)

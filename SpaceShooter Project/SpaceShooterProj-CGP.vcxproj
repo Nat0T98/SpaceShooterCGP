@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Comet.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Comet.h" />
     <ClInclude Include="Enemy.h" />
