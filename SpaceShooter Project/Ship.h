@@ -12,8 +12,6 @@ public:
 	float KeyMoveDown();
 	float KeyMoveLeft();
 	float KeyMoveRight();
-	//float MouseMovement();
-
 	
 private:
 	float speed = 10;

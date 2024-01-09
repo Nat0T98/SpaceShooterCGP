@@ -3,6 +3,7 @@
 #include "SDL_image.h"
 #include "SDL_mixer.h"
 #include "SDL_ttf.h"
+#include "GameObject.h"
 #include "Ship.h"
 #include "Collision.h"
 #include "Enemy.h"
@@ -130,8 +131,10 @@ int main(int argc, char* argv[])
 	PlayerShip.animState = 0;	
 	PlayerShip.animFrames = 3;
 
-	SDL_Texture* E_Ship = LoadTexture("Assets/enemyRed.png");	
-	Enemy EnemyShip{ E_Ship };
+	SDL_Texture* E_Ship1 = LoadTexture("Assets/enemyRed.png");	
+	Enemy EnemyShip1{ E_Ship1 };
+	SDL_Texture* E_Ship2 = LoadTexture("Assets/enemyGreen.png");
+	Enemy EnemyShip2{ E_Ship2 };
 
 	SDL_Texture* _Meteors = LoadTexture("Assets/Meteor.png");
 	Meteor Meteors{ _Meteors };
@@ -208,11 +211,25 @@ int main(int argc, char* argv[])
 			default:
 				break;
 			}
+			
+			Meteors.MoveDown()* deltaTime;
+			EnemyShip1.MoveDown()* deltaTime;
+			EnemyShip1.resetPos();
+			EnemyShip2.MoveDown()* deltaTime;
+			EnemyShip2.resetPos();
+			Meteors.resetPos();
+
 		}		
 
 		//Collision		
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2,   PlayerShip.m_y + PlayerShip.m_h/2,    PlayerShip.m_w/2,
-										EnemyShip.m_x + EnemyShip.m_w/2, EnemyShip.m_y + EnemyShip.m_h/2,  EnemyShip.m_w/2))
+										EnemyShip1.m_x + EnemyShip1.m_w/2, EnemyShip1.m_y + EnemyShip1.m_h/2,  EnemyShip1.m_w/2))
+		{
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+										EnemyShip2.m_x + EnemyShip2.m_w / 2, EnemyShip2.m_y + EnemyShip2.m_h / 2, EnemyShip2.m_w / 2))
 		{
 			std::cout << "Collision Detected" << std::endl;
 			//keepRunning = false;
@@ -239,7 +256,8 @@ int main(int argc, char* argv[])
 		
 
 		//Render the enemy ship and meteors
-		EnemyShip.Draw(g_sdlRenderer);
+		EnemyShip1.Draw(g_sdlRenderer);
+		EnemyShip2.Draw(g_sdlRenderer);
 		Meteors.Draw(g_sdlRenderer);
 		
 		//Text Rendering
@@ -257,7 +275,8 @@ int main(int argc, char* argv[])
 	//Clean Up
 	SDL_DestroyTexture(P_Ship);
 	SDL_DestroyTexture(Background);	
-	SDL_DestroyTexture(E_Ship);
+	SDL_DestroyTexture(E_Ship1);
+	SDL_DestroyTexture(E_Ship2);
 	SDL_DestroyTexture(_Meteors);
 	//SDL_DestroyTexture(textTexture);
 	Mix_FreeChunk(LaserSFX);

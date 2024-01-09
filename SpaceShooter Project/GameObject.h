@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstdlib> 
+#include <ctime>   
+#include <random>
 #pragma once
 #include <string>
 #include <stdlib.h>
@@ -10,30 +13,20 @@
 
 class GameObject
 {
-private:
-	int	_width;
-	int	_height;
-	int	_x;
-	int	_y;
-	SDL_Texture* _texture;
-
 public:
 	
 	GameObject(SDL_Texture* texture);
 	GameObject();
 
-	int MaxEnCount = 100;
-	int MaxMetCount = 20;
+	int MaxEnCount = 10;
+	int MaxMetCount = 10;
+	float enemySpeed = 12;
+	float meteorSpeed = 7;
+	float m_x; //x pos
+	float m_y; //y pos
+	float m_w; //width
+	float m_h; //height
 	
-
-	float m_x = 100; //x pos
-	float m_y = 100; //y pos
-	float m_w = 40; //width
-	float m_h = 40; //height
-
-	SDL_Texture* m_texture = nullptr;
-
-	virtual void Draw(SDL_Renderer* renderer);
 
 	bool isAnimated = false;
 	int animPixelHeight = 16;
@@ -43,16 +36,17 @@ public:
 	float timeInAnimationState = 0;
 	float animationSpeed = 1;
 
-	int				getWidth(void);
-	int				getHeight(void);
-	int				getX(void);
-	int				getY(void);
+	SDL_Texture* m_texture = nullptr;
+	virtual void Draw(SDL_Renderer* renderer);	
 	SDL_Texture* getTexture(void);
 
-	void			setWidth(int width);
-	void			setHeight(int height);
-	void			setX(int x);
-	void			setY(int y);
+	int	getX(void);
+	int	getY(void);		
+	void setX(float x);
+	void setY(float y);
+	void randX();
+	void randY();
+	void resetPos();
 	
 };
 

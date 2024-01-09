@@ -7,6 +7,9 @@ public:
 	Enemy(SDL_Texture* texture);
 	
 	void Draw(SDL_Renderer* renderer) override ;
+	float MoveDown();
 	//void DestroyShip(GameObject);
+	void setSpawn();
+private:
 
 };

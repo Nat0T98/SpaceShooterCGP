@@ -22,40 +22,65 @@ void GameObject::Draw(SDL_Renderer* renderer)
 
 }
 
-int	GameObject::getWidth(void) {
-	return _width;
+void GameObject::randX()
+{
+	//float minX = 50.0f;
+	//float maxX = 700.0f;
+	//
+	//srand(time(0));
+	//RandX = rand() % 700 + 1;
+	////RandX = minX + static_cast<float>(std::rand()) / (static_cast<float>(RAND_MAX / (maxX - minX)));	
+	//m_x = RandX;
 }
 
-int	GameObject::getHeight(void) {
-	return _height;
+void GameObject::randY()
+{
+	//float minY = 0.0f;
+	//float maxY = -200.0f;
+
+	//srand(time(0));
+	//RandY = rand() % -200 - 1;
+	////RandY = minY + static_cast<float>(std::rand()) / (static_cast<float>(RAND_MAX / (maxY - minY)));
+	//m_y = RandY;
 }
 
-int	GameObject::getX(void) {
-	return _x;
+SDL_Texture* GameObject::getTexture(void)
+{
+	return m_texture;
 }
 
-int	GameObject::getY(void) {
-	return _y;
+int	GameObject::getX(void) 
+{
+	return m_x;
 }
 
-SDL_Texture* GameObject::getTexture(void) {
-	return _texture;
+int	GameObject::getY(void)
+{
+	return m_y;
 }
 
-void GameObject::setWidth(int width) {
-	_width = width;
+void GameObject::setX(float x) 
+{
+	m_x = x;
 }
 
-void GameObject::setHeight(int height) {
-	_height = height;
+void GameObject::setY(float y) 
+{
+	m_y = -50;
 }
 
-void GameObject::setX(int x) {
-	_x = x;
-}
-
-
-void GameObject::setY(int y) {
-	_y = y;
+void GameObject::resetPos()
+{
+	if (m_y >= 950)
+	{
+		m_y = -50;
+		std::random_device x;
+		std::uniform_int_distribution<int> dist(50, 700);
+		m_x = dist(x);
+		/*int w = time(0);
+		srand(w);
+		m_x = rand() % 700 + 1*/;
+	};
+		
 }
 
