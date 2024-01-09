@@ -8,6 +8,9 @@
 #include "Collision.h"
 #include "Enemy.h"
 #include "Meteor.h"
+#include "Timer.h"
+#include "Laser.h"
+#include "Comet.h"
 
 
 SDL_Renderer* g_sdlRenderer;
@@ -113,6 +116,8 @@ void CleanUp()
 	SDL_Quit(); //Opposite of SDL_Init(...)
 }
 
+
+
 int main(int argc, char* argv[])
 {
 	if (Initialise())
@@ -134,14 +139,26 @@ int main(int argc, char* argv[])
 	SDL_Texture* E_Ship1 = LoadTexture("Assets/enemyRed.png");	
 	Enemy EnemyShip1{ E_Ship1 };
 	SDL_Texture* E_Ship2 = LoadTexture("Assets/enemyGreen.png");
-	Enemy EnemyShip2{ E_Ship2 };
+	Enemy EnemyShip2{ E_Ship2 }; 
+	SDL_Texture* E_Ship3 = LoadTexture("Assets/enemyBlue.png");
+	Enemy EnemyShip3{ E_Ship3 };
+
 
 	SDL_Texture* _Meteors1 = LoadTexture("Assets/Meteor.png");
 	Meteor Meteor1{ _Meteors1 };
 	SDL_Texture* _Meteors2 = LoadTexture("Assets/Meteor.png");
 	Meteor Meteor2{ _Meteors2 };
 
-	SDL_Texture* Background = LoadTexture("Assets/background.png");		
+	SDL_Texture* _Comet1 = LoadTexture("Assets/Comet.png");
+	Comet Comet1{ _Comet1 };
+	SDL_Texture* _Comet2 = LoadTexture("Assets/Comet.png");
+	Comet Comet2{ _Comet2 };
+
+
+	SDL_Texture* Background = LoadTexture("Assets/background.png");
+
+	SDL_Texture* _Laser = LoadTexture("Assets/pBullet1.png");
+	Laser Lasers{ _Laser };
 
 	//Load Sound Effects
 	Mix_Chunk* LaserSFX = Mix_LoadWAV("Assets/laser4.mp3");
@@ -150,10 +167,11 @@ int main(int argc, char* argv[])
 	//Play Music with inifinte looping
 	Mix_PlayMusic(Music, -1);
 
-	//Load Fonts
-	/*SDL_Surface* textSurface = TTF_RenderText_Blended(g_font, "Hello World", { 255,255,255,255 });
+		
+	// Timer title
+	SDL_Surface* textSurface = TTF_RenderText_Blended(g_font, "Time: ", {255,255,255,255});
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, textSurface);
-	SDL_FreeSurface(textSurface);*/
+	SDL_FreeSurface(textSurface);
 	
 	Uint32 previousFrameTicks = SDL_GetTicks();
 
@@ -162,6 +180,7 @@ int main(int argc, char* argv[])
 	{
 		float deltaTime = (SDL_GetTicks() - (float)(previousFrameTicks)) / 1000;
 		previousFrameTicks = SDL_GetTicks();
+		
 				
 		SDL_Event sdlEvent;
 		while (SDL_PollEvent(&sdlEvent))
@@ -174,8 +193,8 @@ int main(int argc, char* argv[])
 							
 			case SDL_KEYDOWN:
 				if (sdlEvent.key.keysym.sym == SDLK_ESCAPE)
-				{
-					keepRunning = false;
+				{					
+					keepRunning = false;			
 				}
 				
 				else if (sdlEvent.key.keysym.sym == SDLK_w || sdlEvent.key.keysym.sym == SDLK_UP)
@@ -200,7 +219,7 @@ int main(int argc, char* argv[])
 				if (sdlEvent.button.button == SDL_BUTTON_LEFT)
 				{
 					Mix_PlayChannel(-1, LaserSFX, 0);	
-					//PlayerShip.Shoot()
+					Lasers.Draw(g_sdlRenderer);
 				}
 				break;
 
@@ -219,11 +238,23 @@ int main(int argc, char* argv[])
 			EnemyShip1.resetEnPos();
 			EnemyShip2.MoveDown()* deltaTime;
 			EnemyShip2.resetEnPos();
-			
+			EnemyShip3.MoveDown()* deltaTime;
+			EnemyShip3.resetEnPos();
+
 			Meteor1.MoveDown()* deltaTime;
 			Meteor1.resetMetPos();
 			Meteor2.MoveDown()* deltaTime;
 			Meteor2.resetMetPos();
+
+			Comet1.MoveDown()* deltaTime;
+			Comet1.resetCometPos();	
+			Comet2.MoveDown()* deltaTime;
+			Comet2.resetCometPos();
+
+
+			Lasers.Move()* deltaTime;
+			//Lasers.m_x = PlayerShip.m_x;
+			//Lasers.m_y = PlayerShip.m_y;
 
 		}		
 
@@ -265,17 +296,23 @@ int main(int argc, char* argv[])
 		//Render the player ship
 		PlayerShip.Draw(g_sdlRenderer);
 		PlayerShip.timeInAnimationState = SDL_GetTicks() / 1000.0f;
+
+		Lasers.Draw(g_sdlRenderer);	
 		
 
 		//Render the enemy ships and meteors
 		EnemyShip1.Draw(g_sdlRenderer);
 		EnemyShip2.Draw(g_sdlRenderer);
+		EnemyShip3.Draw(g_sdlRenderer);
 		Meteor1.Draw(g_sdlRenderer);
-		Meteor2.Draw(g_sdlRenderer);
+		Meteor2.Draw(g_sdlRenderer);	
+		Comet1.Draw(g_sdlRenderer);	
+		Comet2.Draw(g_sdlRenderer);
 		
+		PlayerShip.ShipBounds();
 		//Text Rendering
-		/*SDL_Rect fontDstRect{ 25, 100, 300, 32 };
-		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDstRect);*/
+		SDL_Rect fontDstRect{ 5, 50, 100, 32 };
+		SDL_RenderCopy(g_sdlRenderer, textTexture, NULL, &fontDstRect);
 				
 		//Update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
@@ -285,12 +322,16 @@ int main(int argc, char* argv[])
 		
 
 	//Clean Up
-	SDL_DestroyTexture(P_Ship);
+	SDL_DestroyTexture(P_Ship);	
+	SDL_DestroyTexture(_Laser);	
 	SDL_DestroyTexture(Background);	
 	SDL_DestroyTexture(E_Ship1);
 	SDL_DestroyTexture(E_Ship2);
+	SDL_DestroyTexture(E_Ship3);
 	SDL_DestroyTexture(_Meteors1);
-	SDL_DestroyTexture(_Meteors2);
+	SDL_DestroyTexture(_Meteors2);	
+	SDL_DestroyTexture(_Comet1);	
+	SDL_DestroyTexture(_Comet2);	
 	//SDL_DestroyTexture(textTexture);
 	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);

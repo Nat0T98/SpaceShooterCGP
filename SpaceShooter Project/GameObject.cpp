@@ -58,9 +58,9 @@ void GameObject::randXpos()
 
 void GameObject::randYpos()
 {
-	int negative = 500;
+	int negative = 960;
 	std::random_device ry;
-	std::uniform_int_distribution<int> dist(0, 500);
+	std::uniform_int_distribution<int> dist(0, 960);
 	m_y = dist(ry) - negative;
 
 }
@@ -99,3 +99,28 @@ void GameObject::resetMetPos()
 	};
 }
 
+
+void GameObject::randCometWidth()
+{
+	std::random_device cw;	
+	std::uniform_int_distribution<int> dist(25, 30);
+	m_w = dist(cw);	
+}
+
+void GameObject::randCometHeight()
+{
+	std::random_device ch;	
+	std::uniform_int_distribution<int> dist(25, 30);
+	m_h = dist(ch);	
+}
+
+void GameObject::resetCometPos()
+{
+	if (m_y >= 950)
+	{
+		randXpos();
+		randYpos();
+		randCometHeight();
+		randCometWidth();
+	};
+}

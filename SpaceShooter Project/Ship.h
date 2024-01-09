@@ -12,6 +12,7 @@ public:
 	float KeyMoveDown();
 	float KeyMoveLeft();
 	float KeyMoveRight();
+	void ShipBounds();
 	
 private:
 	float speed = 10;

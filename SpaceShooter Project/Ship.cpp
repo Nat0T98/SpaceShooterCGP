@@ -47,4 +47,17 @@ float Ship::KeyMoveRight()
 	return m_x;
 }
 
+void Ship::ShipBounds()
+{
+	if (m_x > 750)
+		m_x = 700;
+	if (m_x < 0)
+		m_x = 50;
+
+	if (m_y > 960)
+		m_y = 900;
+	if (m_y < 0)
+		m_y = 50;
+}
+
 

@@ -30,9 +30,9 @@ void Enemy::setSpawnX()
 
 void Enemy::setSpawnY()
 {
-	int negative = 500;
+	int negative = 960;
 	std::random_device y;
-	std::uniform_int_distribution<int> dist(0, 500);
+	std::uniform_int_distribution<int> dist(0, 960);
 	m_y = dist(y) - negative;
 
 }

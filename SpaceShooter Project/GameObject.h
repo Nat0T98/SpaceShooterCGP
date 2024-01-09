@@ -20,8 +20,9 @@ public:
 
 	int MaxEnCount = 10;
 	int MaxMetCount = 10;
-	float enemySpeed = 12;
-	float meteorSpeed = 7;
+	float enemySpeed = 15;
+	float meteorSpeed = 10;
+	float cometSpeed = 20;
 	float m_x; //x pos
 	float m_y; //y pos
 	float m_w; //width
@@ -46,11 +47,13 @@ public:
 	void setY(float y);
 	void resetEnPos();
 	void resetMetPos();
+	void resetCometPos();
 	void randXpos();
 	void randYpos();
 	void randMetWidth();
 	void randMetHeight();
-	
+	void randCometWidth();
+	void randCometHeight();
 };
 
 
