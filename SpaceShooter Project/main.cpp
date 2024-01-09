@@ -136,8 +136,10 @@ int main(int argc, char* argv[])
 	SDL_Texture* E_Ship2 = LoadTexture("Assets/enemyGreen.png");
 	Enemy EnemyShip2{ E_Ship2 };
 
-	SDL_Texture* _Meteors = LoadTexture("Assets/Meteor.png");
-	Meteor Meteors{ _Meteors };
+	SDL_Texture* _Meteors1 = LoadTexture("Assets/Meteor.png");
+	Meteor Meteor1{ _Meteors1 };
+	SDL_Texture* _Meteors2 = LoadTexture("Assets/Meteor.png");
+	Meteor Meteor2{ _Meteors2 };
 
 	SDL_Texture* Background = LoadTexture("Assets/background.png");		
 
@@ -212,12 +214,16 @@ int main(int argc, char* argv[])
 				break;
 			}
 			
-			Meteors.MoveDown()* deltaTime;
+			
 			EnemyShip1.MoveDown()* deltaTime;
-			EnemyShip1.resetPos();
+			EnemyShip1.resetEnPos();
 			EnemyShip2.MoveDown()* deltaTime;
-			EnemyShip2.resetPos();
-			Meteors.resetPos();
+			EnemyShip2.resetEnPos();
+			
+			Meteor1.MoveDown()* deltaTime;
+			Meteor1.resetMetPos();
+			Meteor2.MoveDown()* deltaTime;
+			Meteor2.resetMetPos();
 
 		}		
 
@@ -236,7 +242,13 @@ int main(int argc, char* argv[])
 		}
 
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
-										Meteors.m_x + Meteors.m_w / 2, Meteors.m_y + Meteors.m_h / 2, Meteors.m_w / 2))
+										Meteor1.m_x + Meteor1.m_w / 2, Meteor1.m_y + Meteor1.m_h / 2, Meteor1.m_w / 2))
+		{
+			std::cout << "Collision Detected" << std::endl;
+			//keepRunning = false;
+		}
+		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
+										Meteor2.m_x + Meteor2.m_w / 2, Meteor2.m_y + Meteor2.m_h / 2, Meteor2.m_w / 2))
 		{
 			std::cout << "Collision Detected" << std::endl;
 			//keepRunning = false;
@@ -255,10 +267,11 @@ int main(int argc, char* argv[])
 		PlayerShip.timeInAnimationState = SDL_GetTicks() / 1000.0f;
 		
 
-		//Render the enemy ship and meteors
+		//Render the enemy ships and meteors
 		EnemyShip1.Draw(g_sdlRenderer);
 		EnemyShip2.Draw(g_sdlRenderer);
-		Meteors.Draw(g_sdlRenderer);
+		Meteor1.Draw(g_sdlRenderer);
+		Meteor2.Draw(g_sdlRenderer);
 		
 		//Text Rendering
 		/*SDL_Rect fontDstRect{ 25, 100, 300, 32 };
@@ -266,7 +279,6 @@ int main(int argc, char* argv[])
 				
 		//Update the screen with the state of the render target
 		SDL_RenderPresent(g_sdlRenderer);
-
 		//Halt execution for 16 milliseconds (approx 60 fps)
 		SDL_Delay(25);
 	};	
@@ -277,7 +289,8 @@ int main(int argc, char* argv[])
 	SDL_DestroyTexture(Background);	
 	SDL_DestroyTexture(E_Ship1);
 	SDL_DestroyTexture(E_Ship2);
-	SDL_DestroyTexture(_Meteors);
+	SDL_DestroyTexture(_Meteors1);
+	SDL_DestroyTexture(_Meteors2);
 	//SDL_DestroyTexture(textTexture);
 	Mix_FreeChunk(LaserSFX);
 	Mix_FreeMusic(Music);

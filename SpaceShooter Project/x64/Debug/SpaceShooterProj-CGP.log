@@ -1,11 +1,12 @@
 ﻿  main.cpp
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(181,29): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(185,31): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(189,31): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(193,32): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(207,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(208,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(215,22): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(216,25): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(183,29): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(187,31): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(191,31): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(195,32): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(209,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(210,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
 C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(218,25): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(220,25): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(223,22): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(225,22): warning C4552: '*': result of expression not used
   SpaceShooterProj-CGP.vcxproj -> C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\x64\Debug\SpaceShooterProj-CGP.exe

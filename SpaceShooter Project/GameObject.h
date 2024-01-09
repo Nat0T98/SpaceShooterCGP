@@ -44,9 +44,10 @@ public:
 	int	getY(void);		
 	void setX(float x);
 	void setY(float y);
-	void randX();
-	void randY();
-	void resetPos();
+	void resetEnPos();
+	void resetMetPos();
+	void randMetWidth();
+	void randMetHeight();
 	
 };
 
