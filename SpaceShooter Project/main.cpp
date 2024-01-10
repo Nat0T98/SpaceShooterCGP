@@ -315,28 +315,28 @@ Uint32 previousFrameTicks = SDL_GetTicks();
 										EnemyShip1.m_x + EnemyShip1.m_w/2, EnemyShip1.m_y + EnemyShip1.m_h/2,  EnemyShip1.m_w/2))
 		{
 			PlayerShip.health -= EnemyShip1.enemyDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 										EnemyShip2.m_x + EnemyShip2.m_w / 2, EnemyShip2.m_y + EnemyShip2.m_h / 2, EnemyShip2.m_w / 2))
 		{
 			PlayerShip.health -= EnemyShip2.enemyDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			EnemyShip3.m_x + EnemyShip3.m_w / 2, EnemyShip3.m_y + EnemyShip3.m_h / 2, EnemyShip3.m_w / 2))
 		{
 			PlayerShip.health -= EnemyShip3.enemyDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			EnemyShip4.m_x + EnemyShip4.m_w / 2, EnemyShip4.m_y + EnemyShip4.m_h / 2, EnemyShip4.m_w / 2))
 		{
 			PlayerShip.health -= EnemyShip4.enemyDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 
@@ -345,21 +345,21 @@ Uint32 previousFrameTicks = SDL_GetTicks();
 										Meteor1.m_x + Meteor1.m_w / 2, Meteor1.m_y + Meteor1.m_h / 2, Meteor1.m_w / 2))
 		{
 			PlayerShip.health -= Meteor1.meteorDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 										Meteor2.m_x + Meteor2.m_w / 2, Meteor2.m_y + Meteor2.m_h / 2, Meteor2.m_w / 2))
 		{
 			PlayerShip.health -= Meteor2.meteorDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			Meteor3.m_x + Meteor3.m_w / 2, Meteor3.m_y + Meteor3.m_h / 2, Meteor3.m_w / 2))
 		{
 			PlayerShip.health -= Meteor3.meteorDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 
@@ -368,21 +368,21 @@ Uint32 previousFrameTicks = SDL_GetTicks();
 			Comet1.m_x + Comet1.m_w / 2, Comet1.m_y + Comet1.m_h / 2, Comet1.m_w / 2))
 		{
 			PlayerShip.health -= Comet1.cometDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			Comet2.m_x + Comet2.m_w / 2, Comet2.m_y + Comet2.m_h / 2, Comet2.m_w / 2))
 		{
 			PlayerShip.health -= Comet2.cometDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 		if (Collision::CircleCollision(PlayerShip.m_x + PlayerShip.m_w / 2, PlayerShip.m_y + PlayerShip.m_h / 2, PlayerShip.m_w / 2,
 			Comet3.m_x + Comet3.m_w / 2, Comet3.m_y + Comet3.m_h / 2, Comet3.m_w / 2))
 		{
 			PlayerShip.health -= Comet3.cometDamage;
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 
@@ -396,7 +396,7 @@ Uint32 previousFrameTicks = SDL_GetTicks();
 				PlayerShip.health = PlayerShip.maxHealth;
 			}
 			
-			std::cout << "Health: " << PlayerShip.health << std::endl;
+			//std::cout << "Health: " << PlayerShip.health << std::endl;
 			//keepRunning = false;
 		}
 
