@@ -28,8 +28,9 @@ public:
 	const int enemyDamage = 2;
 	const int meteorDamage = 3;
 	const int cometDamage = 1;
-	int HpPickUpVal = 50;
+	int HpPickUpVal = 1;
 	int enemiesRemaining = 10;
+	int Win = 0;
 
 	//Object Size and Pos
 	float m_x; //x pos

@@ -9,6 +9,8 @@ public:
 
 	void Draw(SDL_Renderer* renderer) override;
 	
+	void IsOffScreen();
+	
 	float Move();
 	
 private:

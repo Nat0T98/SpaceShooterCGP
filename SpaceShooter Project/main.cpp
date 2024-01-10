@@ -47,7 +47,7 @@ bool Initialise()
 		return true;
 	}
 
-	// Create a window with the specified name, anywhere on the screen, 800x600 pixel size and no SDL_WindowFlags flags.
+	// Create a window with the specified name, anywhere on the screen, 750x960 pixel size and no SDL_WindowFlags flags.
 	int iWindowFlag = NULL;
 	g_sdlWindow = SDL_CreateWindow("Week 1 - Intro and Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 750, 960, iWindowFlag);
 	
@@ -166,6 +166,9 @@ int main(int argc, char* argv[])
 	
 	SDL_Texture* _Laser = LoadTexture("Assets/pBullet1.png");
 	Laser Lasers{ _Laser };
+
+	
+	
 #pragma endregion
 		
 #pragma region SFX
@@ -250,8 +253,15 @@ Uint32 previousFrameTicks = SDL_GetTicks();
 			case SDL_MOUSEBUTTONDOWN:
 				if (sdlEvent.button.button == SDL_BUTTON_LEFT)
 				{
-					Mix_PlayChannel(-1, LaserSFX, 0);	
+					int mouseX = sdlEvent.button.x;
+					int mouseY = sdlEvent.button.y;
+					
+					Lasers.m_x = mouseX;	
+					Lasers.m_y = mouseY;	
 					Lasers.Draw(g_sdlRenderer);
+					
+					
+					Mix_PlayChannel(-1, LaserSFX, 0);
 				}
 				break;
 
@@ -266,6 +276,7 @@ Uint32 previousFrameTicks = SDL_GetTicks();
 			}			
 
 			Lasers.Move()* deltaTime;
+			
 			//Lasers.m_x = PlayerShip.m_x;
 			//Lasers.m_y = PlayerShip.m_y;
 			
@@ -403,6 +414,48 @@ Uint32 previousFrameTicks = SDL_GetTicks();
 		
 		
 #pragma endregion
+#pragma region Collision against enemies
+		//Enemy death	
+		if (Collision::CircleCollision(EnemyShip1.m_x + EnemyShip1.m_w / 2, EnemyShip1.m_y + EnemyShip1.m_h / 2, EnemyShip1.m_w / 2,
+			Lasers.m_x + Lasers.m_w / 2, Lasers.m_y + Lasers.m_h / 2, Lasers.m_w / 2))
+		{
+			//delete EnemyShip1;
+			EnemyShip1.enemiesRemaining -= 1;
+		}
+		if (Collision::CircleCollision(EnemyShip2.m_x + EnemyShip2.m_w / 2, EnemyShip2.m_y + EnemyShip2.m_h / 2, EnemyShip2.m_w / 2,
+			Lasers.m_x + Lasers.m_w / 2, Lasers.m_y + Lasers.m_h / 2, Lasers.m_w / 2))
+		{
+			//delete EnemyShip2;
+			EnemyShip1.enemiesRemaining -= 1;
+		}
+		if (Collision::CircleCollision(EnemyShip3.m_x + EnemyShip3.m_w / 2, EnemyShip3.m_y + EnemyShip3.m_h / 2, EnemyShip3.m_w / 2,
+			Lasers.m_x + Lasers.m_w / 2, Lasers.m_y + Lasers.m_h / 2, Lasers.m_w / 2))
+		{
+			//delete EnemyShip3;
+			EnemyShip1.enemiesRemaining -= 1;
+		}
+		if (Collision::CircleCollision(EnemyShip4.m_x + EnemyShip4.m_w / 2, EnemyShip4.m_y + EnemyShip4.m_h / 2, EnemyShip4.m_w / 2,
+			Lasers.m_x + Lasers.m_w / 2, Lasers.m_y + Lasers.m_h / 2, Lasers.m_w / 2))
+		{
+			//delete EnemyShip4;
+			EnemyShip1.enemiesRemaining -= 1;
+		}
+		
+
+		enemyStr = std::to_string(EnemyShip1.enemiesRemaining);
+		SDL_Surface* enemyNum = TTF_RenderText_Blended(g_font, enemyStr.c_str(), { 255, 255, 255, 255 });
+		SDL_Texture* enemyNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, enemyNum);
+		SDL_FreeSurface(enemyNum);
+
+		if (EnemyShip1.enemiesRemaining <= EnemyShip1.Win)
+		{
+			EnemyShip1.enemiesRemaining = EnemyShip1.Win;
+		}
+#pragma endregion
+
+		
+
+
 
 #pragma region Drawing	
 
@@ -462,6 +515,23 @@ if (PlayerShip.health <= PlayerShip.minHealth)
 			
 		}
 #pragma endregion
+
+#pragma region PlayerWin
+if (EnemyShip1.enemiesRemaining <= EnemyShip1.Win)
+{
+
+	SDL_Surface* gameOverSurface = TTF_RenderText_Blended(g_font, "YOU WIN", { 255, 255, 0, 255 });
+	SDL_Texture* gameOverTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, gameOverSurface);
+	SDL_FreeSurface(gameOverSurface);
+
+	SDL_Rect gameOverRect = { 200, 450, 300, 56 };
+	SDL_RenderCopy(g_sdlRenderer, gameOverTexture, nullptr, &gameOverRect);
+	SDL_DestroyTexture(gameOverTexture);
+	HP1.HpPickUpVal = 0;
+	SDL_DestroyTexture(P_Ship);
+}
+#pragma endregion
+
 
 		
 		

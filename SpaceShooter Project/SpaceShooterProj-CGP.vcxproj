@@ -137,6 +137,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Comet.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Comet.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Meteor.h" />

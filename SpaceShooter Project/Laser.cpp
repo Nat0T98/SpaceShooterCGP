@@ -15,6 +15,16 @@ void Laser::Draw(SDL_Renderer* renderer)
 	SDL_RenderCopy(renderer, m_texture, NULL, &dstRect);
 }
 
+void Laser::IsOffScreen()
+{
+	if (m_y <= 0)
+	{
+		m_y = 1000;
+		
+	}
+}
+
+
 float Laser::Move()
 {
 	m_y -= speed;
