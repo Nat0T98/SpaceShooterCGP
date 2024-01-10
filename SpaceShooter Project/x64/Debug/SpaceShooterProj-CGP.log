@@ -1,20 +1,107 @@
-﻿  main.cpp
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(237,29): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(241,31): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(245,31): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(249,32): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(263,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(264,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(273,17): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(278,25): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(280,25): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(282,25): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(284,25): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(287,22): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(289,22): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(291,22): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(294,21): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(296,21): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(298,21): warning C4552: '*': result of expression not used
-C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(301,18): warning C4552: '*': result of expression not used
+﻿  Background.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,20): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Background.cpp(13,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Comet.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,20): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(14,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(28,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Comet.cpp(36,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Enemy.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,20): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(14,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(28,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Enemy.cpp(36,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  GameObject.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,20): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(20,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(29,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(37,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(54,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(61,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(80,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\GameObject.cpp(87,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Laser.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,20): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Laser.cpp(14,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  Meteor.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,20): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(13,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(27,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Meteor.cpp(35,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  PickUps.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,20): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,25): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,30): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,30): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,35): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(14,35): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(29,12): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\PickUps.cpp(37,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Ship.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,24): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,39): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,50): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,50): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,55): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\Ship.cpp(22,55): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(234,29): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(238,31): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(242,31): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(246,32): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(260,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(261,37): warning C4244: '=': conversion from 'Sint32' to 'float', possible loss of data
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(268,17): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(273,25): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(275,25): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(277,25): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(279,25): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(282,22): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(284,22): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(286,22): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(289,21): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(291,21): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(293,21): warning C4552: '*': result of expression not used
+C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\main.cpp(296,18): warning C4552: '*': result of expression not used
+  Generating Code...
   SpaceShooterProj-CGP.vcxproj -> C:\Users\jowet\OneDrive\Documents\UNI Year 2\SpaceShooterCGP\SpaceShooter Project\x64\Debug\SpaceShooterProj-CGP.exe

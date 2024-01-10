@@ -14,10 +14,5 @@ void Background::Draw(SDL_Renderer* renderer)
 	SDL_RenderCopy(renderer, m_texture, NULL, &dstRect);
 }
 
-//float Background::MoveDown()
-//{
-//	m_y += backgroundSpeed;
-//	return m_y;
-//}
 
 

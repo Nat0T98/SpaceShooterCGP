@@ -11,7 +11,6 @@ public:
 	const int minHealth = 0;
 
 	Ship(SDL_Texture* texture);
-
 	void Draw(SDL_Renderer* renderer) override;
 
 	float KeyMoveUp();
@@ -23,6 +22,5 @@ public:
 	int getHealth();
 
 private:
-	float speed = 10;
-	
+	float speed = 10;	
 };

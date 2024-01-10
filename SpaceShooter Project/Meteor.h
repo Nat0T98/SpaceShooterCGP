@@ -5,12 +5,11 @@ class Meteor : public GameObject
 {	
 public:
 	Meteor(SDL_Texture* texture);
-
 	void Draw(SDL_Renderer* renderer) override;
+
 	float MoveDown();
 	void setSpawnX();
 	void setSpawnY();
-		//void DestroyShip(GameObject);
 private:
 
 };

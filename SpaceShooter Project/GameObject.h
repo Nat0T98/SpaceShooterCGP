@@ -1,8 +1,8 @@
+#pragma once
 #include <iostream>
 #include <cstdlib> 
 #include <ctime>   
 #include <random>
-#pragma once
 #include <string>
 #include <stdlib.h>
 #include <SDL.h>
@@ -18,24 +18,27 @@ public:
 	GameObject(SDL_Texture* texture);
 	GameObject();
 
+	//Object Speeds
 	const float enemySpeed = 15;
 	const float meteorSpeed = 10;
 	const float cometSpeed = 20;
 	const float backgroundSpeed = 1;
 	
+	//Object Specific Values
 	const int enemyDamage = 2;
 	const int meteorDamage = 3;
 	const int cometDamage = 1;
 	int HpPickUpVal = 50;
-
 	int enemiesRemaining = 10;
+
+	//Object Size and Pos
 	float m_x; //x pos
 	float m_y; //y pos
 	float m_w; //width
 	float m_h; //height
 
 	
-
+	//for animations
 	bool isAnimated = false;
 	int animPixelHeight = 16;
 	int animPixelWidth = 16;
@@ -44,14 +47,10 @@ public:
 	float timeInAnimationState = 0;
 	float animationSpeed = 1;
 
+	//Functions
 	SDL_Texture* m_texture = nullptr;
 	virtual void Draw(SDL_Renderer* renderer);	
-	SDL_Texture* getTexture(void);
-
-	int	getX(void);
-	int	getY(void);		
-	void setX(float x);
-	void setY(float y);
+		
 	void resetEnPos();
 	void resetMetPos();
 	void resetCometPos();
@@ -61,9 +60,7 @@ public:
 	void randMetWidth();
 	void randMetHeight();
 	void randCometWidth();
-	void randCometHeight();
-	
-	
+	void randCometHeight();	
 };
 
 

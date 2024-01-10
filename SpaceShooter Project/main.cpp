@@ -19,7 +19,7 @@ TTF_Font* g_font;
 
 SDL_Texture* LoadTexture(const char* filename)
 {
-	//Load BMP
+	//Load Image
 	SDL_Surface* Image = IMG_Load(filename);
 	if (Image == nullptr)
 	{
@@ -167,8 +167,7 @@ int main(int argc, char* argv[])
 	SDL_Texture* _Laser = LoadTexture("Assets/pBullet1.png");
 	Laser Lasers{ _Laser };
 #pragma endregion
-
-	
+		
 #pragma region SFX
 //Load Sound Effects
 	Mix_Chunk* LaserSFX = Mix_LoadWAV("Assets/laser4.mp3");
@@ -176,40 +175,38 @@ int main(int argc, char* argv[])
 	Mix_Music* Music = Mix_LoadMUS("Music/Music2.mp3");
 	//Play Music with inifinte looping
 	Mix_PlayMusic(Music, -1);
-#pragma endregion
-	
-	PlayerShip.health;	
-	std::string HealthStr = std::to_string(PlayerShip.health);
-	std::string enemyStr = std::to_string(EnemyShip1.enemiesRemaining);
-	
-	
+#pragma endregion		
 
 #pragma region ttf
+//Conversions to string for Player Health and Enemy Count
+	std::string HealthStr = std::to_string(PlayerShip.health);
+	std::string enemyStr = std::to_string(EnemyShip1.enemiesRemaining);
+
 //Remaining enemies title
 	SDL_Surface* RemEnem = TTF_RenderText_Blended(g_font, "Enemies Remaining: ", {255,255,255,255});
 	SDL_Texture* RemEnTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, RemEnem);
 	SDL_FreeSurface(RemEnem);
-
+//Enemy count
 	SDL_Surface* enemyNum = TTF_RenderText_Blended(g_font, enemyStr.c_str(), { 255,255,255,255 });
 	SDL_Texture* enemyNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, enemyNum);
 	SDL_FreeSurface(enemyNum);
-
+//Health txt
 	SDL_Surface* RemHealth = TTF_RenderText_Blended(g_font, "Health: ", { 255,255,255,255 });
 	SDL_Texture* HealthTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, RemHealth);
 	SDL_FreeSurface(RemHealth);
-
-
+//Health Amount
 	SDL_Surface* HealthNum = TTF_RenderText_Blended(g_font, HealthStr.c_str(), {255,255,255,255});
 	SDL_Texture* HealthNumTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, HealthNum);
 	SDL_FreeSurface(HealthNum);
-
+//Game Over text
 	SDL_Surface* GOver = TTF_RenderText_Blended(g_font, "", { 255, 255, 255, 255 });
 	SDL_Texture* GOverTexture = SDL_CreateTextureFromSurface(g_sdlRenderer, GOver);
 	SDL_FreeSurface(GOver);
 
 #pragma endregion
-		
-	Uint32 previousFrameTicks = SDL_GetTicks();
+
+#pragma region Game Loop
+Uint32 previousFrameTicks = SDL_GetTicks();
 	bool keepRunning = true;
 	while (keepRunning)
 	{
@@ -266,9 +263,7 @@ int main(int argc, char* argv[])
 
 			default:
 				break;
-			}
-
-			
+			}			
 
 			Lasers.Move()* deltaTime;
 			//Lasers.m_x = PlayerShip.m_x;
@@ -409,7 +404,8 @@ int main(int argc, char* argv[])
 		
 #pragma endregion
 
-#pragma region Rendering
+#pragma region Drawing	
+
 //Rendering
 		//Clear the rendering context
 		SDL_RenderClear(g_sdlRenderer);
@@ -436,22 +432,22 @@ int main(int argc, char* argv[])
 		Comet3.Draw(g_sdlRenderer);
 		HP1.Draw(g_sdlRenderer);
 		
-		
-		//Text Rendering
+#pragma endregion	
+
+#pragma region UI 
+//Text Rendering
 		SDL_Rect RemEnRect{ 5, 75, 200, 28 };
 		SDL_RenderCopy(g_sdlRenderer, RemEnTexture, NULL, &RemEnRect);
 		SDL_Rect RemEnNumRect{ 200, 75, 30, 28 };
-		SDL_RenderCopy(g_sdlRenderer, enemyNumTexture, NULL, &RemEnNumRect);	
-
+		SDL_RenderCopy(g_sdlRenderer, enemyNumTexture, NULL, &RemEnNumRect);
 		SDL_Rect HealthTxtRect{ 5, 110, 100, 28 };
 		SDL_RenderCopy(g_sdlRenderer, HealthTexture, NULL, &HealthTxtRect);
 		SDL_Rect HealthNumRect{ 100, 110, 30, 28 };
 		SDL_RenderCopy(g_sdlRenderer, HealthNumTexture, NULL, &HealthNumRect);
-
-		/*SDL_Rect GameOverRect{ 400, 300, 100, 28 };
-		SDL_RenderCopy(g_sdlRenderer, GOverTexture, NULL, &GameOverRect);*/
-
-		if (PlayerShip.health <= PlayerShip.minHealth) 
+#pragma endregion
+		
+#pragma region GameOver
+if (PlayerShip.health <= PlayerShip.minHealth) 
 		{
 			
 			SDL_Surface* gameOverSurface = TTF_RenderText_Blended(g_font, "GAME OVER", { 255, 0, 0, 255 });
@@ -465,6 +461,9 @@ int main(int argc, char* argv[])
 			SDL_DestroyTexture(P_Ship);
 			
 		}
+#pragma endregion
+
+		
 		
 
 				
@@ -472,10 +471,11 @@ int main(int argc, char* argv[])
 		SDL_RenderPresent(g_sdlRenderer);
 		//Halt execution for 16 milliseconds (approx 60 fps)
 		SDL_Delay(25);
-#pragma endregion
+
 
 		
 	};	
+#pragma endregion	
 		
 #pragma region Clean Up
 //Clean Up
@@ -503,7 +503,6 @@ int main(int argc, char* argv[])
 	
 	CleanUp();
 #pragma endregion
-
-	
+		
 	return 0;
 }

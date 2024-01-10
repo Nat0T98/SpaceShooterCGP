@@ -22,33 +22,6 @@ void GameObject::Draw(SDL_Renderer* renderer)
 
 }
 
-
-
-SDL_Texture* GameObject::getTexture(void)
-{
-	return m_texture;
-}
-
-int	GameObject::getX(void) 
-{
-	return m_x;
-}
-
-int	GameObject::getY(void)
-{
-	return m_y;
-}
-
-void GameObject::setX(float x) 
-{
-	m_x = x;
-}
-
-void GameObject::setY(float y) 
-{
-	m_y = -50;
-}
-
 void GameObject::randXpos()
 {
 	std::random_device rx;
